@@ -3,12 +3,6 @@ Talks
 
 slides & snippets from Chriest
 
-Externals
----------
-
-Before this repo is created, resources are all over the net as standalone repos.
-Keep a reference here to better organize them.
-
 - [Dive Into Stream](https://github.com/jswed/dive-into-stream)@[JsWed]
 - [dMachine](https://github.com/jswed/dMachine)@[JsWed]
 - [block-flow](https://github.com/jcppman/block-flow)@[JsWed]
