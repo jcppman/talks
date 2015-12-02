@@ -1,0 +1,15 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "generateBrandFeatures.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "~0.9.0",
+    "mongodb": "~1.4.7"
+  }
+}
