@@ -149,7 +149,7 @@ e.g: http://bower.herokuapp.com/packages/jquery
 - **transparency**: minimun efforts & effects
 --
 
-- **complexibility**: easy to setup and maintain
+- **complexity**: easy to setup and maintain
 
 ---
 
