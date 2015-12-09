@@ -330,3 +330,5 @@ class: middle
 class: middle
 
 # Done, thanks!
+
+This slide & all other slides: http://github.com/jcppman/talks
