@@ -3,6 +3,7 @@ Talks
 
 slides & snippets from Chriest
 
+- [How I keep bower happy BEHIND THE WALL](JsMeetup_1209/)@[JsMeetup]
 - [MongoDB Aggregation](AggInMongo/)@[JsWed]
 - [Dive Into Stream](https://github.com/jswed/dive-into-stream)@[JsWed]
 - [dMachine](https://github.com/jswed/dMachine)@[JsWed]
@@ -12,3 +13,4 @@ slides & snippets from Chriest
 
 
 [JsWed]: http://www.meetup.com/efjsday/
+[JsMeetup]: http://www.meetup.com/Shanghai-JavaScript-Meetup/

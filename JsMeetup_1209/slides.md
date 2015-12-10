@@ -292,6 +292,15 @@ An express route
 - npm install -g custom-resolver
 - .bowerrc
 
+```
+{
+  "registry": "http://localhost:9919",
+  "resolvers": [
+    "archive-resolver"
+  ]
+}
+```
+
 --
 
 ### Comparison
@@ -299,7 +308,7 @@ An express route
 --
 
 - http proxy & cache
-  - won't affect non-Github packages
+  - we won't affect non-Github packages
 --
 
 - [private-bower](https://github.com/Hacklone/private-bower)
