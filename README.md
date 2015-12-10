@@ -14,3 +14,16 @@ slides & snippets from Chriest
 
 [JsWed]: http://www.meetup.com/efjsday/
 [JsMeetup]: http://www.meetup.com/Shanghai-JavaScript-Meetup/
+
+Usage
+=====
+
+Most of the slides are crafted with [remark](https://github.com/gnab/remark),
+you will need to host this repo on a static http server to make it works correctly.
+
+E.g:
+
+- `npm install -g http-server`
+- `http-server`
+- open http://localhost:8080
+
