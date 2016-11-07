@@ -1,13 +1,25 @@
+class: center, middle
 # I PROMISE!
 
 In 2016, this is (almost) all you need to know about async in js.
 
-# Agenda
+---
 
-- A Quick Review of JS Event Loooooop and the whole picture
+# Agenda
+--
+
+- A Quick Review of JS Event Loop and the whole picture
+--
+
 - Promise: The CORE
+--
+
 - Generator: Mimic the sync world
+--
+
 - Async/await: The fanciness
+
+---
 
 # Event Looooooooooooop
 
@@ -19,19 +31,24 @@ In 2016, this is (almost) all you need to know about async in js.
 	}
 ```
 
+---
+layout: true
 # Be a time lord
+---
 
 - setTimeout
 
+Say we have a Component
 ```
-
 	// MyUIComponent implementation
 	function MyUICompoment() {
 		this.trigger('selected');
 	}
 
 ```
+--
 
+We new an instance and attach the handler
 ```
 
 	var file = new MyUIComponent();
@@ -40,7 +57,12 @@ In 2016, this is (almost) all you need to know about async in js.
 	});
 
 ```
+--
 
+Nothing happend... Why?
+---
+
+To fix it:
 ```
 
 	// MyUIComponent implementation
@@ -52,7 +74,14 @@ In 2016, this is (almost) all you need to know about async in js.
 
 ```
 
-- nextTick
+--
+
+But MOM! There might be whole bunch of callbacks in between, I want it NOW!
+
+---
+
+To make it happens earlier:
+- nextTick (Node.js Exclusive)
 
 ```
 	while(pendingCallbacks.length > 0) {
@@ -64,6 +93,12 @@ In 2016, this is (almost) all you need to know about async in js.
 	}
 
 ```
+
+--
+
+Problem?
+
+---
 
 - setImmediate
 
@@ -77,57 +112,106 @@ In 2016, this is (almost) all you need to know about async in js.
 
 ```
 
+---
+layout: false
 # An awesomeness
 
 In terms of concurrency model 
-WebWorker, ServiceWorker, iframe... No additional complicity
 
-# Progression
+Bringin in all cool stuff like WebWorker, ServiceWorker, iframe...
 
-Callback => [Async.js](https://github.com/caolan/async) => Promise => Generator + Promise => Async/Await
+--
+
+No additional complicity
+
+---
+
+# The Progression
+
+```
+Callback
+    => [Async.js](https://github.com/caolan/async)
+        => Promise
+            => Generator + Promise
+                => Async/Await
+```
+
+--
 
 The reason is:
+
+--
 
 ** Intuitive is the king **
 
 More intuitive, less mistakes, more predictable
 
+---
+class: center, middle
 # Promise
+
+---
 
 ## Why is Promise important? 
 
+--
+
 ### Promise is the core of modern js async
+--
+
 ### Promise is the core of modern js async
+--
+
 ### Promise is the core of modern js async
+--
 
 - Generator and Async/Await are all based on promise
+--
+
 - Easy to manage
 
-## Purpose of this sharing
+---
+
+## The main purpose of this sharing
+
+--
 
 - Trap oriented => Knowledge oriented
+--
+
 - No more confusing edge cases
 	- racing
 	- a.then, a.then, a.then
 
+---
+
 ## [Promise/A+] (https://promisesaplus.com/)
 
-Promise is:
+--
 
-- Has three states
+Promise is:
+--
+
+- It has three states
 	- pending
 	- fulfilled
 	- rejected
-- 'Pending' once created
+--
+
+- `State === 'Pending'` once created
+--
+
 - only two paths:
 	- pending => fulfilled with a given value
 	- pending => rejected with a given reason
-- has a method `then` that accept two functions as arguments, when ever we `then`:
+--
+
+- `then`-able, whenever we `then`:
 	- the first function will be executed with the fulfilled value
 	- the second funciton will be executed with the rejected reason
 	- `then` return a promise
-- The rest things are decided by implementations
 
+---
 Now we are able to answer most of the confusing cases:
 
 ```
@@ -143,6 +227,8 @@ Now we are able to answer most of the confusing cases:
 	});
 	
 ```
+
+---
 
 ```
 
@@ -172,26 +258,28 @@ Now we are able to answer most of the confusing cases:
 	
 ```
 
+---
+layout: true
 ## To start a new promise
+---
 
 ### Deferred
 
 ```
-
 	var deferred = Promise.defer();
 
 	doSomething(function () {
 		deferred.resolve();
 	});
 
-	return deferred.promoise;
-
+	return deferred.promise;
 ```
+
+---
 
 ### Function injection
 
 ```
-
 new Promise(function (resolve, reject) {
 	// do something
 	resolve();
@@ -199,30 +287,47 @@ new Promise(function (resolve, reject) {
 
 ```
 
+---
+layout: false
 ### Deferred is not recommended/deprecated
 
+--
+
 - Function injection can catch thrown exceptions
+--
+
 - INTUITIVE IS THE KING: Function injection encourages dev to write self-explained code blocks
 
+---
+
 ### ES6 Promise
+
+Only includes essential stuff:
+
+--
 
 - Start a promise:
 	- `new Promise(function (resolve, reject) {});`
 	- `Promise.resolve(value)`
 	- `Promise.reject(reason`
+--
+
 - `promise.then`
+--
+
 - `Promise.all`
+--
+
 - `Promise.race` (any)
+
+---
 
 ### Example
 
 ```
-
 function enterPage(options) {
-	
 	// login first
 	return doLogin().then(function (client) {
-
 		var promises = [];
 
 		// get user info
@@ -237,12 +342,10 @@ function enterPage(options) {
 		// feed app info to ppl who need it
 		var pInfo = client.getAppInfo(sessionKey).then(function (appInfo) {
 			otherStuff.set(appInfo.appName);
-			otherStuff.set(appInfo.appLocation);
 		});
 		promises.push(pInfo);
 
 		// setup something
-		client.setCacheLevel(options.cacheLevel);
 		client.setDebugLevel(options.debugLevel);
 
 		// load assets
@@ -250,12 +353,31 @@ function enterPage(options) {
 
 		return Promise.all(promises);
 	});
-
 }
 
 ```
 
-# Generator
+---
+class: center, middle
+
+### Wanna write something equivalant with just callbacks?
+
+---
+
+## Next step
+
+Promise is cool, but:
+
+--
+
+- `then` will still introduce one level of idents
+
+--
+
+- good for complicated stuff, but *visually* overwhelming for straight forward
+stuff
+
+---
 
 ## Do you miss the synchronized world?
 
@@ -269,7 +391,15 @@ Our goal:
 	parsedXML = parseXML(data)
 ```
 
+---
+class: center, middle
+# Generator
+
+---
+layout: true
 ## A generator is:
+
+---
 
 - something you can get values from it
 
@@ -299,6 +429,8 @@ Our goal:
 	// ....
 ```
 
+---
+
 - and new syntax make it looks prettier
 
 ```
@@ -311,7 +443,12 @@ Our goal:
 	}
 ```
 
+--
+
 - so it become something "pause-able"
+
+---
+layout: false
 
 ## So use generator + promise to do async looks like:
 
@@ -331,25 +468,49 @@ Our goal:
 	});
 ```
 
+---
+
 and the helper function `execute` might be something like:
 
+--
+
 - accept a generator as argument
+--
+
 - keep executing the generator
 	- whenever the generator yield something, get the value and feed it back
 	- if done, return the last value
 
+---
+
 ## This is good, but not good enough, because:
 
+--
+
 - need some helpers to achieve this
+--
+
 - INTUITIVE IS THE KING
+--
+
 	- function* looks awful
+--
+
 	- I'm trying to get a value, not given out, yield doesn't make sense
+--
+
 
 So...
 
+---
+class: middle, center
 # Async/Await
 
-Same concept, same form, just prettier
+---
+
+### Same concept, same form, just prettier
+
+--
 
 ```
 
@@ -370,28 +531,61 @@ Same concept, same form, just prettier
 
 ```
 
+--
+
 - No new wheel: The same good old Promise
+--
+
 - Straight forward logic
+--
+
+- You can see it as a syntax sugar for the pattern `generator + promise`
+    - `yield` => `await`
+    - `function*` => `async function`
+    - built-in executer
+
+---
 
 # Conclusion
+--
 
 - Async/Await is based upon Promises
+--
+
 - Promise is based upon Callbacks
+--
+
 - Callbacks is based upon JS event loop
+--
+
 
 They form the whole js async pulling model
 
+---
+
 ## Take away
+
+--
 
 - If you are a function, you're dealing with a promise, you either:
 	- return it to your caller
 	- end it with proper error handling
+--
+
 - If you are already using generator and compile it to ES5:
 	- use Async/Await comfortably
+
+---
 
 # Another direction: PUSH!
 
 Wait! You promised to talke about stream, eventemitter, RxJs.....
 
-> STATE: Pending...
+--
 
+## promise.STATE: Pending...
+
+---
+class: center, middle
+
+# THANKS!
