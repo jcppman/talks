@@ -23,6 +23,25 @@ In 2016, this is (almost) all you need to know about async in js.
 
 # Event Looooooooooooop
 
+whenever we execute a js file:
+
+```
+    doSomething();
+
+    console.log('hello');
+
+    // the provided callback will be exectued when data is loaded (xxx ms later)
+    getRemoteData(function (err, data) {
+        // data
+    });
+
+    console.log('world');
+```
+
+--
+
+js engine put pending callbacks in a queue
+
 ```
 	while(pendingCallbacks.length > 0) {
 		// check if there's any satisfied callbacks
@@ -81,7 +100,7 @@ But MOM! There might be whole bunch of callbacks in between, I want it NOW!
 ---
 
 To make it happens earlier:
-- nextTick (Node.js Exclusive)
+- `process.nextTick` (Node.js Exclusive)
 
 ```
 	while(pendingCallbacks.length > 0) {
@@ -118,7 +137,18 @@ layout: false
 
 In terms of concurrency model 
 
-Bringin in all cool stuff like WebWorker, ServiceWorker, iframe...
+--
+
+When bringing in all other "parallel universe" stuff like:
+
+- WebWorker
+- ServiceWorker
+- iframe...
+
+???
+Nobody will jump in and change my stuff when I'm executing
+
+Even WebWorker's shared memory follow the pattern
 
 --
 
@@ -146,26 +176,33 @@ The reason is:
 
 More intuitive, less mistakes, more predictable
 
+???
+All wheels we made are for this purpose
+
 ---
 class: center, middle
 # Promise
-
 ---
 
-## Why is Promise important? 
+## Why is Promise important/interesting? 
+
+???
+Originally proposed in 1976.
+
+--
+
+### Callback sucks
+
+--
+
+### Functional
 
 --
 
 ### Promise is the core of modern js async
 --
 
-### Promise is the core of modern js async
---
-
-### Promise is the core of modern js async
---
-
-- Generator and Async/Await are all based on promise
+- "Use Generator or Async/Await to do async" is all based on promise
 --
 
 - Easy to manage
@@ -227,6 +264,13 @@ Now we are able to answer most of the confusing cases:
 	});
 	
 ```
+
+???
+These cases looks weird but it is very likely to happen!
+
+Or we can even utilize them actively
+
+Buttons to stop a stopwatch
 
 ---
 
@@ -293,7 +337,7 @@ layout: false
 
 --
 
-- Function injection can catch thrown exceptions
+- Function injection can catch thrown exceptions, deferred can't
 --
 
 - INTUITIVE IS THE KING: Function injection encourages dev to write self-explained code blocks
@@ -309,7 +353,7 @@ Only includes essential stuff:
 - Start a promise:
 	- `new Promise(function (resolve, reject) {});`
 	- `Promise.resolve(value)`
-	- `Promise.reject(reason`
+	- `Promise.reject(reason)`
 --
 
 - `promise.then`
@@ -319,7 +363,6 @@ Only includes essential stuff:
 --
 
 - `Promise.race` (any)
-
 ---
 
 ### Example
@@ -357,6 +400,9 @@ function enterPage(options) {
 
 ```
 
+???
+Straight and easy to read
+
 ---
 class: center, middle
 
@@ -370,7 +416,7 @@ Promise is cool, but:
 
 --
 
-- `then` will still introduce one level of idents
+- `then` will still introduce one level of indents
 
 --
 
@@ -549,7 +595,7 @@ class: middle, center
 # Conclusion
 --
 
-- Async/Await is based upon Promises
+- Async/Await is based upon Promises & generator
 --
 
 - Promise is based upon Callbacks
