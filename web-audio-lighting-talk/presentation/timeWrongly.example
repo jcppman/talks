@@ -1,0 +1,16 @@
+var context = new AudioConext();
+var osc = context.createOscillator();
+var gain = context.createGain();
+
+osc.connect(gain);
+gain.connect(context.destination);
+osc.start();
+
+this.timer = setInterval(() => {
+  const value = gain.gain.value;
+  if (value === 0.5) {
+    gain.gain.value = gain.gain.value = 0.2;
+  } else {
+    gain.gain.value = 0.5;
+  }
+}, 100);

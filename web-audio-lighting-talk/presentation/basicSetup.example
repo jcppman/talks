@@ -1,0 +1,6 @@
+var context = new AudioConext();
+var osc = context.createOscillator();
+var gain = context.createGain();
+
+osc.connect(gain);
+gain.connect(context.destination);
