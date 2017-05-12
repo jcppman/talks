@@ -3,7 +3,8 @@ Talks
 
 slides & snippets from Chriest
 
-- [Promise 2016](promise_promise/)@[Splunk Shanghai]
+- [Web Audio API Lighting Talk](web-audio-lighting-talk/)@Splunk Shanghai
+- [Promise 2016](promise_promise/)@Splunk Shanghai
 - [How I keep bower happy BEHIND THE WALL](JsMeetup_1209/)@[JsMeetup]
 - [MongoDB Aggregation](AggInMongo/)@[JsWed]
 - [Dive Into Stream](https://github.com/jswed/dive-into-stream)@[JsWed]
