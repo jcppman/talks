@@ -5,9 +5,9 @@ slides & snippets from Chriest
 
 - [Go Faster! Lightening Talk](go-faster/)@Splunk Shanghai
 - [Web Audio API Lighting Talk](web-audio-lighting-talk/)@Splunk Shanghai
-- [Promise 2016](promise_promise/)@Splunk Shanghai
-- [How I keep bower happy BEHIND THE WALL](JsMeetup_1209/)@[JsMeetup]
-- [MongoDB Aggregation](AggInMongo/)@[JsWed]
+- [Promise 2016](promise-promise/)@Splunk Shanghai
+- [How I keep bower happy BEHIND THE WALL](js-meetup-1209/)@[JsMeetup]
+- [MongoDB Aggregation](agg-in-mongo/)@[JsWed]
 - [Dive Into Stream](https://github.com/jswed/dive-into-stream)@[JsWed]
 - [dMachine](https://github.com/jswed/dMachine)@[JsWed]
 - [block-flow](https://github.com/jcppman/block-flow)@[JsWed]
