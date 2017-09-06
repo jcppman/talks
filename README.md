@@ -3,7 +3,8 @@ Talks
 
 slides & snippets from Chriest
 
-- [Go Faster! Lightening Talk](go-faster/)@Splunk Shanghai
+- [Go Faster! SH JS Meetup version](go-faster-js-meetup/)@[JsMeetup]
+- [Go Faster! Splunk Lightening Talk](go-faster/)@Splunk Shanghai
 - [Web Audio API Lighting Talk](web-audio-lighting-talk/)@Splunk Shanghai
 - [Promise 2016](promise-promise/)@Splunk Shanghai
 - [How I keep bower happy BEHIND THE WALL](js-meetup-1209/)@[JsMeetup]
