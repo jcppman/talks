@@ -14,9 +14,18 @@ Filtering and aggregation
 ## WHAT: History
 
 - Monolithic Architecture
-    <Notes>Splunk Enterprise</Notes>
+<Notes>
+Synchronized development & deployment period
+Like... Splunk Enterprise
+</Notes>
 - Service Oritented Architecture
+<Notes>
+Decoupled Deployments
+</Notes>
 - Microservices Architecture
+<Notes>
+Don't start explaining it. Leave it for the next section
+</Notes>
 
 ---
 
@@ -65,6 +74,111 @@ Asynchronous messages
 ---
 
 # Live "Coding"
+
+---
+
+## Iteration 0
+# Requirements 
+
+- Post an entry
+- List all entries of a user
+- Get one entry
+- Remove an entry
+
+<Notes>
+
+## Messages:
+
+- post:entry user:id content:content
+- entry:list
+- entry:save
+- [info:entry]
+
+## Services:
+
+- front
+- post
+- entry-store
+
+</Notes>
+
+---
+
+## Iteration 1
+# Requirements
+
+- Search contents
+
+<Notes>
+
+Messages:
+
+- search:insert
+- search:query
+
+### explain the decoupling
+### new front roll-out
+
+</Notes>
+
+---
+
+## Iteration 2
+# Requirements
+
+- Cache entries
+
+<Notes>
+
+- Introduce a new service entry-cache
+- Update entry-store
+
+</Notes>
+
+---
+
+## Interation 3
+# Requirements
+
+- Users should be able to follow others
+- Users should be able to see their own timelines
+
+<Notes>
+
+Messages:
+
+## How to construct timeline?
+
+- follow:add
+- follow:list type:followers
+- follow:list type:following
+- timeline:view
+- timeline:insert
+
+Services:
+
+- follow
+- timeline
+- construct-timeline
+
+</Notes>
+
+---
+
+## Iteration 4
+# Requirements
+
+- Scale the "timeline" service
+
+<Notes>
+
+## Isn't database sharding good enought?
+
+</Notes>
+
+---
+
+## Routing
 
 ---
 

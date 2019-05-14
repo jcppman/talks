@@ -4,10 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-      "start": "mdx-deck slides.mdx",
-      "build": "mdx-deck build deck.mdx"
+    "start": "mdx-deck slides.mdx",
+    "build": "mdx-deck build slides.mdx",
+    "export": "mdx-deck-export pdf slides.mdx"
   },
   "devDependencies": {
+    "@mdx-deck/export": "^2.3.2",
     "mdx-deck": "^2.3.2"
   }
 }
