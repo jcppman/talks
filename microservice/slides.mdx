@@ -7,29 +7,78 @@ export { hack as theme } from '@mdx-deck/themes'
 ---
 
 ## The purpose of this sharing
+
 Filtering and aggregation
+
+---
+
+## Table of Content
+
+- WHAT: Monolithic? Service-based? Microservice???
+- WHY: Disadvantages of the two precedents
+- HOW: Design a system
+- Summary: Pros and Cons of Microservice-based Architecture
 
 ---
 
 ## WHAT: History
 
 - Monolithic Architecture
+
 <Notes>
+
+A big chunk of software
 Synchronized development & deployment period
 Like... Splunk Enterprise
+
 </Notes>
+
 - Service Oritented Architecture
+
 <Notes>
-Decoupled Deployments
+
+Separate them into standalone services
+Deployments are decoupled
+
 </Notes>
+
 - Microservices Architecture
+
 <Notes>
+
 Don't start explaining it. Leave it for the next section
+
+</Notes>
+
+---
+
+## WHY
+
+Disadvantage of Monolithic Architecture
+
+<Notes>
+
+Tight coupling
+Tech debt
+Scalability
+
+</Notes>
+
+---
+
+## WHY
+Disadvantage of Service Oriented Architecture
+
+<Notes>
+
+Tech debt
+
 </Notes>
 
 ---
 
 ## WHAT: Definition
+
 - Definition 1: Size
 - Definition 2: Independently deployable process
 - Definition 3: mini REST-based web applications
@@ -40,35 +89,39 @@ Don't start explaining it. Leave it for the next section
 
 What microservice based architecture really is?
 
----
-## WHY
-Disadvantage of Monolithic Architecture
 <Notes>
-Coupling
-</Notes>
 
----
+A mindset, a design pattern
+Business requirements are constantly changing
+Code for business logic get old quickly
+Microservices should be disposable
 
-## WHY
-Disadvantage of Service Oriented Architecture
-<Notes>
-Tech debt
 </Notes>
 
 ---
 
 ## HOW: Principles
+
 - Message-driven design process
+
+<Notes>
+
+Because **Microservices should be disposable**
+
+</Notes>
+
 - Keep the service-down in mind
 
 ---
 
 ## HOW: Message-driven
+
 Synchronous messages
 
 ---
 
 ## HOW: Message-driven
+
 Asynchronous messages
 
 ---
@@ -178,7 +231,10 @@ Services:
 
 ---
 
-## Routing
+## Iteration 5
+# Requirements
+
+- Advertisements
 
 ---
 
@@ -193,7 +249,21 @@ Services:
 
 ## Summary: Disadvantage
 
-- deployment complexity
-- traffic cost
-- reduce of reliability
-- architecture design is much important
+- Deployment complexity
+- Traffic cost
+- Reduce of reliability
+- Architecture design is much important
+
+---
+
+## FInal words
+
+Monolithic <==> Microservices
+
+<Notes>
+
+They are not againsting each other like black and white
+Microservice-based architecture is more like a best practice to design a system
+Less structure flexibility (compare to Monolithic)
+
+</Notes>
