@@ -14,16 +14,16 @@ Filtering and aggregation
 
 ## Table of Content
 
-- WHAT: Monolithic? Service-based? Microservice???
-- WHY: Disadvantages of the two precedents
+- WHAT: Terminology
+- WHY: Disadvantages of the precedents
 - HOW: Design a system
-- Summary: Pros and Cons of Microservice-based Architecture
+- Summary: Pros and Cons
 
 ---
 
-## WHAT: History
+## WHAT: Terminlogy
 
-- Monolithic Architecture
+# Monolithic Architecture
 
 <Notes>
 
@@ -33,7 +33,11 @@ Like... Splunk Enterprise
 
 </Notes>
 
-- Service Oritented Architecture
+---
+
+## WHAT: Terminlogy
+
+# Service Oritented Architecture
 
 <Notes>
 
@@ -42,11 +46,38 @@ Deployments are decoupled
 
 </Notes>
 
-- Microservices Architecture
+---
+
+## WHAT: Terminlogy
+
+# Microservices Architecture
 
 <Notes>
 
 Don't start explaining it. Leave it for the next section
+
+</Notes>
+
+---
+
+## WHAT: Definition of Microservice
+
+- Definition 1: Size
+- Definition 2: Independently deployable process
+- Definition 3: mini REST-based web applications
+
+---
+
+## WHAT
+
+What microservice based architecture really is?
+
+<Notes>
+
+A mindset, a design pattern
+Business requirements are constantly changing
+Code for business logic get old quickly
+Microservices should be disposable
 
 </Notes>
 
@@ -77,32 +108,11 @@ Tech debt
 
 ---
 
-## WHAT: Definition
-
-- Definition 1: Size
-- Definition 2: Independently deployable process
-- Definition 3: mini REST-based web applications
-
----
-
-## WHAT
-
-What microservice based architecture really is?
-
-<Notes>
-
-A mindset, a design pattern
-Business requirements are constantly changing
-Code for business logic get old quickly
-Microservices should be disposable
-
-</Notes>
-
----
-
 ## HOW: Principles
 
 - Message-driven design process
+- Keep the service-down in mind
+- Prefer addition over modification
 
 <Notes>
 
@@ -110,7 +120,6 @@ Because **Microservices should be disposable**
 
 </Notes>
 
-- Keep the service-down in mind
 
 ---
 
@@ -126,7 +135,9 @@ Asynchronous messages
 
 ---
 
-# Live "Coding"
+## Live "Coding"
+
+# Start-up: Fwiffer
 
 ---
 
@@ -135,23 +146,26 @@ Asynchronous messages
 
 - Post an entry
 - List all entries of a user
-- Get one entry
-- Remove an entry
 
 <Notes>
 
 ## Messages:
 
-- post:entry user:id content:content
+- entry:post
 - entry:list
-- entry:save
+- store:add
+- store:list
 - [info:entry]
 
 ## Services:
 
 - front
-- post
+- entry
 - entry-store
+
+## Discuss:
+- DB & xxx-store
+- Message bus
 
 </Notes>
 
@@ -183,8 +197,9 @@ Messages:
 
 <Notes>
 
+## Addition > Modification
+
 - Introduce a new service entry-cache
-- Update entry-store
 
 </Notes>
 
@@ -194,25 +209,24 @@ Messages:
 # Requirements
 
 - Users should be able to follow others
-- Users should be able to see their own timelines
+- Users should be able to see their own feeds
 
 <Notes>
 
 Messages:
 
-## How to construct timeline?
+## How to construct feeds?
 
 - follow:add
 - follow:list type:followers
 - follow:list type:following
-- timeline:view
-- timeline:insert
+- feeds:list
+- feeds:add
 
 Services:
 
 - follow
-- timeline
-- construct-timeline
+- feeds
 
 </Notes>
 
@@ -221,7 +235,7 @@ Services:
 ## Iteration 4
 # Requirements
 
-- Scale the "timeline" service
+- Scale the "feeds-store" service
 
 <Notes>
 
@@ -231,18 +245,11 @@ Services:
 
 ---
 
-## Iteration 5
-# Requirements
-
-- Advertisements
-
----
-
 ## Summary: Advantages
 
-- Built-in failure tolerance mechanism
-- Services are scalable & swapable
 - Low tech debt
+- Low to zero coupling (between microservices)
+- Partial Scaling
 - Language independent
 
 ---
@@ -256,7 +263,7 @@ Services:
 
 ---
 
-## FInal words
+## Final words
 
 Monolithic <==> Microservices
 
